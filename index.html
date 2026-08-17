@@ -1,71 +1,338 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Yono All Games</title>
+<title>All Games App List</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef3f7;
+  color:#10233f;
+}
+
+/* Header */
+header{
+  background:#063f36;
+  color:white;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:#19c98b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+}
+
+.site-name{
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* Navigation */
+nav{
+  background:white;
+  display:flex;
+  justify-content:center;
+  gap:4px;
+  padding:5px;
+  border-bottom:1px solid #ddd;
+}
+
+nav a{
+  color:#10233f;
+  text-decoration:none;
+  font-weight:bold;
+  padding:13px 18px;
+  border-radius:8px;
+}
+
+nav a:hover{
+  background:#e8f5f0;
+}
+
+/* Hero */
+.hero{
+  background:#073f3b;
+  color:white;
+  text-align:center;
+  padding:45px 18px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin:10px 0 18px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.6;
+  max-width:700px;
+  margin:auto;
+}
+
+/* Search */
+.search{
+  max-width:620px;
+  margin:28px auto 0;
+  display:flex;
+  background:white;
+  border:4px solid #f0bd24;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.search input{
+  width:100%;
+  padding:16px;
+  border:0;
+  outline:none;
+  font-size:17px;
+}
+
+.search button{
+  width:80px;
+  border:0;
+  background:#16c58b;
+  font-size:24px;
+}
+
+/* Main */
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 18px;
+}
+
+.section-title{
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+.apps{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+/* App Card */
+.card{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  border-top:5px solid #f0bd24;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.app-icon{
+  width:100px;
+  height:100px;
+  margin:auto;
+  border-radius:20px;
+  background:linear-gradient(135deg,#087b55,#19d69a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+}
+
+.card h3{
+  font-size:22px;
+  margin:15px 0 8px;
+}
+
+.card p{
+  color:#777;
+}
+
+.download{
+  display:block;
+  background:#16c58b;
+  color:#063f36;
+  text-decoration:none;
+  padding:14px;
+  border-radius:12px;
+  font-weight:bold;
+  margin-top:18px;
+}
+
+.download:hover{
+  background:#0eaa76;
+}
+
+/* Footer */
+footer{
+  background:#063f36;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .apps{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  nav{
+    overflow-x:auto;
+    justify-content:flex-start;
+  }
+
+  nav a{
+    white-space:nowrap;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮</div>
+  <div class="site-name">All Games App List</div>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#privacy">Privacy</a>
+</nav>
+
+<section class="hero">
+
+  <h1>All Games & Apps</h1>
+
+  <p>
+    अपने पसंदीदा Android Games और Apps की जानकारी
+    एक ही जगह पर देखें।
+  </p>
+
+  <div class="search">
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="App खोजें..."
+      onkeyup="searchApps()"
+    >
+    <button>🔍</button>
+  </div>
+
+</section>
+
+<main>
+
+  <h2 class="section-title">🎮 Games & Apps</h2>
+
+  <div class="apps" id="appList">
+
+    <div class="card">
+      <div class="app-icon">🎮</div>
+      <h3>Game App</h3>
+      <p>Latest Android Game</p>
+      <a
+        class="download"
+        href="https://play.google.com/"
+        target="_blank"
+      >
+        Download
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="app-icon">🚀</div>
+      <h3>Fun Game</h3>
+      <p>Mobile Friendly Game</p>
+      <a
+        class="download"
+        href="https://play.google.com/"
+        target="_blank"
+      >
+        Download
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="app-icon">⭐</div>
+      <h3>Popular App</h3>
+      <p>Popular Android App</p>
+      <a
+        class="download"
+        href="https://play.google.com/"
+        target="_blank"
+      >
+        Download
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="app-icon">🔥</div>
+      <h3>New Game</h3>
+      <p>New Android Game</p>
+      <a
+        class="download"
+        href="https://play.google.com/"
+        target="_blank"
+      >
+        Download
+      </a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 All Games App List
+</footer>
+
+<script>
+function searchApps(){
+
+  let input =
+    document.getElementById("searchBox")
+    .value.toLowerCase();
+
+  let cards =
+    document.querySelectorAll(".card");
+
+  cards.forEach(function(card){
+
+    let name =
+      card.querySelector("h3")
+      .innerText.toLowerCase();
+
+    if(name.includes(input)){
+      card.style.display = "";
+    }else{
+      card.style.display = "none";
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eef4f7;
-      color: #10233f;
-    }
+  });
+}
+</script>
 
-    /* Header */
-    header {
-      background: #063f3b;
-      color: white;
-      padding: 18px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 27px;
-    }
-
-    /* Menu */
-    nav {
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      padding: 8px;
-      box-shadow: 0 2px 8px #bbb;
-    }
-
-    nav a {
-      color: #17243a;
-      text-decoration: none;
-      padding: 12px 18px;
-      font-weight: bold;
-      border-radius: 8px;
-    }
-
-    nav a:hover {
-      background: #e5f5f2;
-    }
-
-    /* Hero */
-    .hero {
-      background: #073f3b;
-      color: white;
-      text-align: center;
-      padding: 45px 20px;
-    }
-
-    .hero h2 {
-      font-size: 34px;
-      margin: 10px 0;
-    }
-
-    .hero p {
-      font-size: 
-https://uonoindrummyvip.com/?code=2BA4Z3AP7US&t=1786964780
+</body>
+</html>
